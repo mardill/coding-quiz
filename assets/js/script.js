@@ -98,35 +98,28 @@ function answerClick(event) {
             correct.innerText = "Correct!";
         }else{
             correct.innerText = "Wrong!";
-        }
+            secondsLeft = secondsLeft -5;
+            }
 
         i = i+1
         
         populateQuestions()
 }
 
-opAns1.addEventListener("click", finishGame)
-opAns2.addEventListener("click", finishGame)
-opAns3.addEventListener("click", finishGame)
-opAns4.addEventListener("click", finishGame)
 
-function finishGame(event){
-    var element = event.target
 
-    if(i === questions.length || secondsLeft === 0){
+function finishGame(){
         questionEl.style.display = 'none'
         opAns1.style.display = 'none'
         opAns2.style.display = 'none'
         opAns3.style.display = 'none'
         opAns4.style.display = 'none'
         finish.style.display = 'block'
-        score.innerText = secondsLeft
-
-    }
-    
-
-    console.log(element)
-    console.log(questions[i])
+        if(secondsLeft < 0){
+            score.innerText = 0;
+            timeEl.textContent = "time left: 0"
+        }else{
+            score.innerText = secondsLeft}
 }
 
 
@@ -136,11 +129,10 @@ function setTime(){
         secondsLeft--;
         timeEl.textContent = "time left: " + secondsLeft;
 
-        if(secondsLeft === 0 || i === questions.length ) {
+        if(secondsLeft < 0) {
             clearInterval(timerInterval);
+            finishGame()
         }
-
-        console.log('hi')
 
     }, 1000)
 }
