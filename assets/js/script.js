@@ -13,25 +13,23 @@ var correct = document.querySelector("#winlose");
 
 var questions = [
     {
-    id:0,
-    q: "Which is the highest level?",
-    a:[
-        {text:"h2", correct:false},
-        {text: "h1", correct:true},
-        {text:"h3", correct:false},
-        {text:"h4", correct:false}
-    ]
+    question: "Which is the highest level?",
+    answers:
+        {1: "h2",
+        2: "h3",
+        3: "h1",
+        4: "h4"},
+    correctAnswer: "h1"
     },
 
     {
-    id:1,
-    q: "What is the right answer?",
-    a:[
-        {text:"1", correct:false},
-        {text: "2", correct:false},
-        {text:"3", correct:false},
-        {text:"4", correct:true}
-    ]
+    question: "What is the right answer?",
+    answers:
+        {1: "1",
+        2: "2",
+        3: "3",
+        4: "4"},
+    correctAnswer: "1"
     }
 ]
 
@@ -49,11 +47,11 @@ function startGame(){
     opAns3.style.display = 'block'
     opAns4.style.display = 'block'
 
-    questionEl.innerText = questions[0].q
-    opAns1.innerText = questions[0].a[0].text
-    opAns2.innerText = questions[0].a[1].text
-    opAns3.innerText = questions[0].a[2].text
-    opAns4.innerText = questions[0].a[3].text
+    questionEl.innerText = questions[0].question
+    opAns1.innerText = questions[0].answers[1]
+    opAns2.innerText = questions[0].answers[2]
+    opAns3.innerText = questions[0].answers[3]
+    opAns4.innerText = questions[0].answers[4]
 }
 
 
@@ -62,45 +60,85 @@ function startGame(){
 // when i click a button correct field shows and then
 // new question is shown
 
-opAns1.addEventListener("click", showAnswer)
-opAns2.addEventListener("click", showAnswer)
-opAns3.addEventListener("click", showAnswer)
-opAns4.addEventListener("click", showAnswer)
+opAns1.addEventListener("click", nextQuestion)
+opAns2.addEventListener("click", nextQuestion)
+opAns3.addEventListener("click", nextQuestion)
+opAns4.addEventListener("click", nextQuestion)
 
-function showAnswer(){
-    if(questions[0].a[0].correct === true){
+
+function nextQuestion(event){
+
+    var element = event.target
+    
+    if(questions[0].correctAnswer === element.innerText){
         correct.innerText = "Correct!";
+    }else{
+        correct.innerText = "Wrong!";
     }
-    else{
-        correct.innerText = "Wrong!"
-    }
+
+    questionEl.innerText = questions[1].question
+    opAns1.innerText = questions[1].answers[1]
+    opAns2.innerText = questions[1].answers[2]
+    opAns3.innerText = questions[1].answers[3]
+    opAns4.innerText = questions[1].answers[4]
+
 }
 
 
-opAns1.addEventListener("click", populateQuestion2)
-opAns2.addEventListener("click", populateQuestion2)
-opAns3.addEventListener("click", populateQuestion2)
-opAns4.addEventListener("click", populateQuestion2)
 
 
 
-function populateQuestion2(){
 
 
-    questionEl.innerText = questions[2].q
 
-    opAns1.innerText = questions[1].a[0].text
-    opAns2.innerText = questions[1].a[1].text
-    opAns3.innerText = questions[1].a[2].text
-    opAns4.innerText = questions[1].a[3].text
 
-    // for(i=1; i<questions.length; i++){
-    //     questionEl.innerText = questions[i].q;
-    // }
-    // for(i=0; i<questions.a.length; i++){
-    //     opAns1.innerText = questions[0].a[i].text;
-    // }
-}
+
+
+
+
+
+
+
+// function showAnswer(event){
+
+//     var element = event.target
+
+//     var btn = element.getAttribute("id")
+
+    
+//     if(questions[0].a[i].correct === true){1
+//         correct.innerText = "Correct!";
+//     }
+//     else{
+//         correct.innerText = "Wrong!"
+//     }
+// }
+
+
+// opAns1.addEventListener("click", populateQuestion2)
+// opAns2.addEventListener("click", populateQuestion2)
+// opAns3.addEventListener("click", populateQuestion2)
+// opAns4.addEventListener("click", populateQuestion2)
+
+
+
+// function populateQuestion2(){
+
+
+//     questionEl.innerText = questions[1].q
+
+//     opAns1.innerText = questions[1].a[0].text
+//     opAns2.innerText = questions[1].a[1].text
+//     opAns3.innerText = questions[1].a[2].text
+//     opAns4.innerText = questions[1].a[3].text
+
+//     // for(i=1; i<questions.length; i++){
+//     //     questionEl.innerText = questions[i].q;
+//     // }
+//     for(i=0; i<questions[0].a.length; i++){
+//         opAns1.innerText = questions[0].a[i].text;
+//     // }
+// }
 
 // populateQuestion()
 
@@ -138,37 +176,8 @@ function populateQuestion2(){
 // opAns4.innerText = questions[0].a[3].text;
 
 
-// opAns1.addEventListener("click", checkAnswer)
-// opAns2.addEventListener("click", checkAnswer)
-// opAns3.addEventListener("click", checkAnswer)
-// opAns4.addEventListener("click", checkAnswer)
 
 
-// function checkAnswer(){
-//     if(questions[0].a[0].correct === true)
-//     {
-//         return correct.innerText = "Correct!";
-//     }
-//     else {return correct.innerText = "Wrong!";
-//     }
-
-    // if(questions[0].a[1].correct === true){
-    //     return correct.innerText = "Correct!";
-    // }
-    // else {return correct.innerText = "Wrong!";
-    // }
-
-    // if(questions[0].a[2].correct === true){
-    //     return correct.innerText = "Correct!";
-    // }
-    // else {return correct.innerText = "Wrong!";
-    // }
-
-    // if(questions[0].a[3].correct === true){
-    //     return correct.innerText = "Correct!";
-    // }
-    // else {return correct.innerText = "Wrong!";
-    // }
 
 
 
