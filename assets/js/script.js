@@ -10,6 +10,7 @@ var opAns3 = document.querySelector("#ans3");
 var opAns4 = document.querySelector("#ans4");
 var btnAns = document.querySelector(".btn");
 var correct = document.querySelector("#winlose");
+var finish = document.querySelector("#submit-initials");
 var i = 0
 
 var questions = [
@@ -32,14 +33,23 @@ var questions = [
     correctAnswer: "2"
     },
     {
-        question: "3: What is the wrong answer",
-        answers:
-            {1: "10",
-            2: "20",
-            3: "30",
-            4: "40"},
-        correctAnswer: "30"
-        }
+    question: "3: What is the wrong answer",
+    answers:
+        {1: "10",
+        2: "20",
+        3: "30",
+        4: "40"},
+    correctAnswer: "30"
+    },
+    {
+    question: "4: favorite letter",
+    answers:
+        {1: "a",
+        2: "b",
+        3: "c",
+        4: "d"},
+    correctAnswer: "d"
+    }
 ]
 
 startButton.addEventListener("click", startGame)
@@ -58,11 +68,13 @@ function startGame(){
 }
 
 function populateQuestions(){
-    questionEl.innerText = questions[i].question
-    opAns1.innerText = questions[i].answers[1]
-    opAns2.innerText = questions[i].answers[2]
-    opAns3.innerText = questions[i].answers[3]
-    opAns4.innerText = questions[i].answers[4]
+    if(i <= questions.length-1){
+        questionEl.innerText = questions[i].question
+        opAns1.innerText = questions[i].answers[1]
+        opAns2.innerText = questions[i].answers[2]
+        opAns3.innerText = questions[i].answers[3]
+        opAns4.innerText = questions[i].answers[4]
+        }
 }
 
 
@@ -71,7 +83,6 @@ opAns1.addEventListener("click", answerClick)
 opAns2.addEventListener("click", answerClick)
 opAns3.addEventListener("click", answerClick)
 opAns4.addEventListener("click", answerClick)
-
 
 
 //populate new questions function
@@ -85,10 +96,32 @@ function answerClick(event) {
         }
 
         i = i+1
-
+        
         populateQuestions()
-
 }
+
+opAns1.addEventListener("click", finishGame)
+opAns2.addEventListener("click", finishGame)
+opAns3.addEventListener("click", finishGame)
+opAns4.addEventListener("click", finishGame)
+
+function finishGame(event){
+    var element = event.target
+
+    if(i === questions.length){
+        questionEl.style.display = 'none'
+        opAns1.style.display = 'none'
+        opAns2.style.display = 'none'
+        opAns3.style.display = 'none'
+        opAns4.style.display = 'none'
+        finish.style.display = 'block'
+    }
+    
+
+    console.log(element)
+    console.log(questions[i])
+}
+
 
 
 
