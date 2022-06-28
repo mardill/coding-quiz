@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Word Guess</title>
+  </head>
+
+
+  <body>
+        <header>
+            <h3 id="timer">timeleft: 0</h3>
+        </header>
+
+
+        <section class="startPage" data-state="visible" >
+            <h1>Javascript Coding Challenge</h1>
+            <p>Try your knowledge at Javascript! Answer all the questions
+            correctly within the time limit. Any wrong answers will result
+            in 15 seconds off the clock. 
+            </p>
+            <button id="startButton">Start</button>
+        </section>
+
+        <section class="question-card" data-state="hidden">
+            <div id="question"></div>
+
+            <div id="question-options">
+                <button id="ans1"></button>
+                <button id="ans2"></button>
+                <button id="ans3"></button>
+                <button id="ans4"></button>
+            </div>
+
+            <div id="result"></div>
+        </section>
+
+        <section class="results" data-state="hidden">
+            
+        </section>
+
+
+        <script src="./assets/js/script.js"></script>
+
+
+  </body>
