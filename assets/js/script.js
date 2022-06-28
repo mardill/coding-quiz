@@ -10,6 +10,7 @@ var opAns3 = document.querySelector("#ans3");
 var opAns4 = document.querySelector("#ans4");
 var btnAns = document.querySelector(".btn");
 var correct = document.querySelector("#winlose");
+var i = 0
 
 var questions = [
     {
@@ -28,16 +29,16 @@ var questions = [
         2: "2",
         3: "3",
         4: "4"},
-    correctAnswer: "1"
+    correctAnswer: "2"
     },
     {
         question: "3: What is the wrong answer",
         answers:
-            {1: "1",
-            2: "2",
-            3: "3",
-            4: "4"},
-        correctAnswer: "3"
+            {1: "10",
+            2: "20",
+            3: "30",
+            4: "40"},
+        correctAnswer: "30"
         }
 ]
 
@@ -53,66 +54,44 @@ function startGame(){
     opAns2.style.display = 'block'
     opAns3.style.display = 'block'
     opAns4.style.display = 'block'
+    populateQuestions()
+}
 
-    questionEl.innerText = questions[0].question
-    opAns1.innerText = questions[0].answers[1]
-    opAns2.innerText = questions[0].answers[2]
-    opAns3.innerText = questions[0].answers[3]
-    opAns4.innerText = questions[0].answers[4]
+function populateQuestions(){
+    questionEl.innerText = questions[i].question
+    opAns1.innerText = questions[i].answers[1]
+    opAns2.innerText = questions[i].answers[2]
+    opAns3.innerText = questions[i].answers[3]
+    opAns4.innerText = questions[i].answers[4]
 }
 
 
-opAns1.addEventListener("click", populateQuestions)
-opAns2.addEventListener("click", populateQuestions)
-opAns3.addEventListener("click", populateQuestions)
-opAns4.addEventListener("click", populateQuestions)
 
-//Play Function
-// function playGame() {
-//     populateQuestions()
+opAns1.addEventListener("click", answerClick)
+opAns2.addEventListener("click", answerClick)
+opAns3.addEventListener("click", answerClick)
+opAns4.addEventListener("click", answerClick)
 
-// }
 
 
 //populate new questions function
-function populateQuestions(event) {
+function answerClick(event) {
     var element = event.target
-    var i = 1
 
-        questionEl.innerText = questions[i].question
-        opAns1.innerText = questions[i].answers[1]
-        opAns2.innerText = questions[i].answers[2]
-        opAns3.innerText = questions[i].answers[3]
-        opAns4.innerText = questions[i].answers[4]
-    var i = i+1
+        if(questions[i].correctAnswer === element.innerText){
+            correct.innerText = "Correct!";
+        }else{
+            correct.innerText = "Wrong!";
+        }
+
+        i = i+1
+
+        populateQuestions()
+
 }
 
 
 
-// function checkAnswer(event){
-
-//     var element = event.target
-
-//     var i = 0
-
-//     questionEl.innerText = questions[i].question
-//     opAns1.innerText = questions[i].answers[1]
-//     opAns2.innerText = questions[i].answers[2]
-//     opAns3.innerText = questions[i].answers[3]
-//     opAns4.innerText = questions[i].answers[4]
-
-//     if(questions[i].correctAnswer === element.innerText){
-//         correct.innerText = "Correct!";
-//     }else{
-//         correct.innerText = "Wrong!";
-//     }
-
-//     i += i
-// }
-
-
-
-            
 
         
     
@@ -133,24 +112,6 @@ function populateQuestions(event) {
 
 
 
-
-
-
-
-// function fillQuestion(){
-//     for(i in questions[i], i=0, i++){
-//         questionEl.innerText = questions.[i].q;
-//     }
-// }
-// questionEl.innerText = questions[1].q;
-
-
-
-
-// opAns1.innerText = questions[0].a[0].text;
-// opAns2.innerText = questions[0].a[1].text;
-// opAns3.innerText = questions[0].a[2].text;
-// opAns4.innerText = questions[0].a[3].text;
 
 
 
