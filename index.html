@@ -13,32 +13,34 @@
             <h3 id="timer">timeleft: 0</h3>
         </header>
 
-
-        <section class="startPage" data-state="visible" >
+        <section  id="startPage">
             <h1>Javascript Coding Challenge</h1>
-            <p>Try your knowledge at Javascript! Answer all the questions
-            correctly within the time limit. Any wrong answers will result
-            in 15 seconds off the clock. 
-            </p>
+            <div id="intro">
+                <p>Try your knowledge at Javascript! Answer all the questions
+                correctly within the time limit. Any wrong answers will result
+                in 15 seconds off the clock. 
+                </p>
+            </div>
             <button id="startButton">Start</button>
         </section>
 
-        <section class="question-card" data-state="hidden">
-            <div id="question"></div>
+        <section id="question-card">
 
-            <div id="question-options">
-                <button id="ans1"></button>
-                <button id="ans2"></button>
-                <button id="ans3"></button>
-                <button id="ans4"></button>
-            </div>
+            <div id="question">question</div>
 
-            <div id="result"></div>
+            <button id="ans1"></button>
+            <button id="ans2"></button>
+            <button id="ans3"></button>
+            <button id="ans4"></button>
+
+
+            <div id="winlose"></div>
+
         </section>
 
-        <section class="results" data-state="hidden">
-            
+        <section id="scores" hidden >
         </section>
+
 
 
         <script src="./assets/js/script.js"></script>
