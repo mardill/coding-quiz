@@ -11,6 +11,10 @@ var opAns4 = document.querySelector("#ans4");
 var btnAns = document.querySelector(".btn");
 var correct = document.querySelector("#winlose");
 var finish = document.querySelector("#submit-initials");
+var timeEl = document.querySelector(".timer");
+var score = document.querySelector("#score");
+
+var secondsLeft = 10;
 var i = 0
 
 var questions = [
@@ -65,6 +69,7 @@ function startGame(){
     opAns3.style.display = 'block'
     opAns4.style.display = 'block'
     populateQuestions()
+    setTime()
 }
 
 function populateQuestions(){
@@ -108,13 +113,15 @@ opAns4.addEventListener("click", finishGame)
 function finishGame(event){
     var element = event.target
 
-    if(i === questions.length){
+    if(i === questions.length || secondsLeft === 0){
         questionEl.style.display = 'none'
         opAns1.style.display = 'none'
         opAns2.style.display = 'none'
         opAns3.style.display = 'none'
         opAns4.style.display = 'none'
         finish.style.display = 'block'
+        score.innerText = secondsLeft
+
     }
     
 
@@ -122,6 +129,21 @@ function finishGame(event){
     console.log(questions[i])
 }
 
+
+function setTime(){
+    var timerInterval = setInterval(function(){
+
+        secondsLeft--;
+        timeEl.textContent = "time left: " + secondsLeft;
+
+        if(secondsLeft === 0 || i === questions.length ) {
+            clearInterval(timerInterval);
+        }
+
+        console.log('hi')
+
+    }, 1000)
+}
 
 
 
