@@ -14,45 +14,45 @@ var finish = document.querySelector("#submit-initials");
 var timeEl = document.querySelector(".timer");
 var score = document.querySelector("#score");
 
-var secondsLeft = 10;
+var secondsLeft = 46;
 var i = 0
 
 var questions = [
     {
-    question: "1: Which is the highest level?",
-    answers:
-        {1: "h2",
-        2: "h3",
-        3: "h1",
-        4: "h4"},
-    correctAnswer: "h1"
-    },
-    {
-    question: "2: What is the right answer?",
+    question: "1: What value does an index always start on?",
     answers:
         {1: "1",
         2: "2",
-        3: "3",
-        4: "4"},
-    correctAnswer: "2"
+        3: "x",
+        4: "0"},
+    correctAnswer: "0"
     },
     {
-    question: "3: What is the wrong answer",
+    question: "2: What function stops a timer in Javascript?",
     answers:
-        {1: "10",
-        2: "20",
-        3: "30",
-        4: "40"},
-    correctAnswer: "30"
+        {1: "endTimer",
+        2: "timeStop",
+        3: "clearInterval",
+        4: "timeZero"},
+    correctAnswer: "clearInterval"
     },
     {
-    question: "4: favorite letter",
+    question: "3: What is a string enclosed using?",
     answers:
-        {1: "a",
-        2: "b",
-        3: "c",
-        4: "d"},
-    correctAnswer: "d"
+        {1: "''",
+        2: '()',
+        3: '{}',
+        4: '[]'},
+    correctAnswer: "''"
+    },
+    {
+    question: "4: How do you declare a variable?",
+    answers:
+        {1: "function()",
+        2: "variable =",
+        3: "def",
+        4: "var "},
+    correctAnswer: "var"
     }
 ]
 
@@ -102,8 +102,11 @@ function answerClick(event) {
             }
 
         i = i+1
-        
-        populateQuestions()
+
+        if(i === questions.length){
+            finishGame()
+        }else{
+        populateQuestions()}
 }
 
 
@@ -119,12 +122,13 @@ function finishGame(){
             score.innerText = 0;
             timeEl.textContent = "time left: 0"
         }else{
-            score.innerText = secondsLeft}
+            score.innerText = secondsLeft;
+        }
+        clearInterval(timerInterval);
 }
 
-
 function setTime(){
-    var timerInterval = setInterval(function(){
+    timerInterval = setInterval(function(){
 
         secondsLeft--;
         timeEl.textContent = "time left: " + secondsLeft;
