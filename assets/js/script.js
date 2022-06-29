@@ -15,9 +15,7 @@ var finish = document.querySelector("#submit-initials");
 var timeEl = document.querySelector(".timer");
 var score = document.querySelector("#score");
 var submitBtn = document.querySelector("#submit");
-var scoreList = document.querySelector("#list-scores");
-var highScoresInt = document.querySelector("#high-scores-int");
-var highScoresSc = document.querySelector("#high-scores-sc");
+
 
 // create variable for how long timer will last for
 var secondsLeft = 46;
@@ -160,16 +158,19 @@ function setTime(){
     }, 1000)
 }
 
+var scoreList = document.querySelector("#list-scores");
+var highScoresInt = document.querySelector("#high-scores-int");
+var highScoresSc = document.querySelector("#high-scores-sc");
+
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
   
-    var ititials = document.querySelector("#initials").value;
+    var initials = document.querySelector("#initials").value;
 
-    localStorage.setItem("initials", JSON.stringify(ititials))
+    localStorage.setItem("initials", initials)
     localStorage.setItem("scores", secondsLeft)
     
-    renderLastRegistered();
     }
 
 )
@@ -181,10 +182,10 @@ function finalPage() {
     correct.style.display = 'none';
     scoreList.style.display = 'block';
 
-    var initials = JSON.parse(localStorage.getItem("initials"))
-    var allScores= JSON.parse(localStorage.getItem("scores"))
-    highScoresInt.textContent = (initials)
-    highScoresSc.textContent = allScores
+    var initials = localStorage.getItem("initials")
+    var allScores = localStorage.getItem("scores")
 
+    highScoresInt.textContent = initials
+    highScoresSc.textContent = allScores
 
 }
