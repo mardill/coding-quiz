@@ -1,4 +1,5 @@
 
+// define variables calling classes & ids from html
 var start = document.querySelector("#startPage");
 var startButton = document.querySelector("#startButton");
 var card = document.querySelector("#question-card")
@@ -14,9 +15,11 @@ var finish = document.querySelector("#submit-initials");
 var timeEl = document.querySelector(".timer");
 var score = document.querySelector("#score");
 
+// create variable for how long timer will last for
 var secondsLeft = 46;
-var i = 0
+var i = 0;
 
+// create an array of questions that will be used in question & answer buttons
 var questions = [
     {
     question: "1: What value does an index always start on?",
@@ -56,41 +59,51 @@ var questions = [
     }
 ]
 
-startButton.addEventListener("click", startGame)
 
-// hide start page and show first question on click event
-// populate buttons and question
+// create eventlistener for click on the start game button
+startButton.addEventListener("click", startGame);
+
+// setting function to hide intro and start button when start button is click
+// un-hides the question block and answer buttons changing display from none to block
+// calling function to populate questions when clicked
+// starts timer on click
 function startGame(){
-    startButton.style.display = 'none'
-    start.style.display = 'none'
-    questionEl.style.display = 'block'
-    opAns1.style.display = 'block'
-    opAns2.style.display = 'block'
-    opAns3.style.display = 'block'
-    opAns4.style.display = 'block'
-    populateQuestions()
-    setTime()
+    startButton.style.display = 'none';
+    start.style.display = 'none';
+    questionEl.style.display = 'block';
+    opAns1.style.display = 'block';
+    opAns2.style.display = 'block';
+    opAns3.style.display = 'block';
+    opAns4.style.display = 'block';
+    populateQuestions();
+    setTime();
 }
 
+// function to populate questions in order from the questions array
+// using i to grab questions index 0 up to length of the array and populate buttons with answer text
 function populateQuestions(){
     if(i <= questions.length-1){
-        questionEl.innerText = questions[i].question
-        opAns1.innerText = questions[i].answers[1]
-        opAns2.innerText = questions[i].answers[2]
-        opAns3.innerText = questions[i].answers[3]
-        opAns4.innerText = questions[i].answers[4]
+        questionEl.innerText = questions[i].question;
+        opAns1.innerText = questions[i].answers[1];
+        opAns2.innerText = questions[i].answers[2];
+        opAns3.innerText = questions[i].answers[3];
+        opAns4.innerText = questions[i].answers[4];
         }
 }
 
 
-
+// creates another eventlistener on the answer buttons
 opAns1.addEventListener("click", answerClick)
 opAns2.addEventListener("click", answerClick)
 opAns3.addEventListener("click", answerClick)
 opAns4.addEventListener("click", answerClick)
 
 
-//populate new questions function
+// function to call on click
+// first: fills in section if button clicked matches questions array correct answer
+// if it does not match, deducts 5 seconds from timer
+// then adds 1 to i and question populates to next in array on click as well
+// ends game when i is at last question
 function answerClick(event) {
     var element = event.target
 
@@ -101,41 +114,45 @@ function answerClick(event) {
             secondsLeft = secondsLeft -5;
             }
 
-        i = i+1
+        i = i+1;
 
         if(i === questions.length){
-            finishGame()
+            finishGame();
         }else{
-        populateQuestions()}
+            populateQuestions()};
 }
 
 
-
+// function to end game
+// hides question and answer buttons and shows results page
+// makes sure score can't be lower than 0 and log time less than 0 and sets score text to amount of seconds left
 function finishGame(){
-        questionEl.style.display = 'none'
-        opAns1.style.display = 'none'
-        opAns2.style.display = 'none'
-        opAns3.style.display = 'none'
-        opAns4.style.display = 'none'
-        finish.style.display = 'block'
+        questionEl.style.display = 'none';
+        opAns1.style.display = 'none';
+        opAns2.style.display = 'none';
+        opAns3.style.display = 'none';
+        opAns4.style.display = 'none';
+        finish.style.display = 'block';
         if(secondsLeft < 0){
             score.innerText = 0;
-            timeEl.textContent = "time left: 0"
+            timeEl.textContent = "time left: 0";
         }else{
             score.innerText = secondsLeft;
         }
         clearInterval(timerInterval);
 }
 
+// timer function setting to decrement seconds from secondsLeft variable and text content for timer variable
 function setTime(){
     timerInterval = setInterval(function(){
 
         secondsLeft--;
         timeEl.textContent = "time left: " + secondsLeft;
 
+        // stops timer from going lower than 0
         if(secondsLeft < 0) {
             clearInterval(timerInterval);
-            finishGame()
+            finishGame();
         }
 
     }, 1000)
