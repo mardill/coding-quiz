@@ -1,6 +1,4 @@
-/* div{
-    display: block;
-} */
+ /* sets all font-family for everything on page */
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -12,6 +10,7 @@ header h3{
     padding-right: 36px;
 }
 
+/* styling for start page and questions when they appear on page */
 #startPage, #question-card{
     display: flex;
     align-items: center;
@@ -21,6 +20,7 @@ header h3{
     
 }
 
+/* hides question & question buttons initially */
 #question-card #question,  #question-card button{
     display: none;
 }
@@ -37,6 +37,7 @@ header h3{
     text-align: center;
 }
 
+/* styling for start button */
 #startPage button{
     background-color: aquamarine;
     text-decoration: none;
@@ -47,7 +48,7 @@ header h3{
     font-size: 22px;
 }
 
-
+/* creates different color on button hover */
 #startPage button:hover, #question-card button:hover{
     background-color: aqua;
 }
@@ -58,7 +59,6 @@ header h3{
     flex-direction: column;
     padding-top: 80px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #question-card #question{
@@ -66,13 +66,8 @@ header h3{
     padding-bottom: 30px;
 }
 
-#question-card #question-options{
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-    padding: 30px;
-}
 
+/* answer buttons styling */
 #question-card button{
     height:50px;
     width: 300px;
@@ -83,9 +78,9 @@ header h3{
     border: none;
     font-size: 22px;
     padding-left: 20px;
-
 }
 
+/* styling for answer results on page after choice response */
 #winlose{
     padding-top: 40px;
     font-size:26px;
@@ -94,11 +89,12 @@ header h3{
 }
 
 
+/* hides classes & ids call hide */
 .hide{
     display: none;
 }
 
+/* final page stying with score */
 #submit-initials{
     padding-left: 300px
-
 }
