@@ -49,6 +49,21 @@
         <section class="hide" id="submit-initials">
             <h1>You finished!</h1>
             <p>Your final score is <span id="score"></span></p>
+            <div class="form">
+                <label for="initals">Enter Initials</label>
+                <input type="text" name="initials" id="initials" />
+                <button id="submit">Submit</button>
+            </div>
+
+        </section>
+
+        <!-- final page calling scores from local storage and start over button -->
+        <section class="hide" id="list-scores">
+            <h3>High Scores</h3>
+            <div>
+                <h4>Initials: <span id="high-scores-int"></span></h4>
+                <h4>Score: <span id="high-scores-sc"></span></h4>
+            </div>
         </section>
 
 

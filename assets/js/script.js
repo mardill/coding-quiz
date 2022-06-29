@@ -14,6 +14,10 @@ var correct = document.querySelector("#winlose");
 var finish = document.querySelector("#submit-initials");
 var timeEl = document.querySelector(".timer");
 var score = document.querySelector("#score");
+var submitBtn = document.querySelector("#submit");
+var scoreList = document.querySelector("#list-scores");
+var highScoresInt = document.querySelector("#high-scores-int");
+var highScoresSc = document.querySelector("#high-scores-sc");
 
 // create variable for how long timer will last for
 var secondsLeft = 46;
@@ -59,7 +63,6 @@ var questions = [
     }
 ]
 
-
 // create eventlistener for click on the start game button
 startButton.addEventListener("click", startGame);
 
@@ -91,13 +94,11 @@ function populateQuestions(){
         }
 }
 
-
 // creates another eventlistener on the answer buttons
 opAns1.addEventListener("click", answerClick)
 opAns2.addEventListener("click", answerClick)
 opAns3.addEventListener("click", answerClick)
 opAns4.addEventListener("click", answerClick)
-
 
 // function to call on click
 // first: fills in section if button clicked matches questions array correct answer
@@ -116,12 +117,13 @@ function answerClick(event) {
 
         i = i+1;
 
+        // end game when all questions are answered
         if(i === questions.length){
+            timeEl.textContent = secondsLeft;
             finishGame();
         }else{
             populateQuestions()};
 }
-
 
 // function to end game
 // hides question and answer buttons and shows results page
@@ -159,38 +161,30 @@ function setTime(){
 }
 
 
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+  
+    var ititials = document.querySelector("#initials").value;
 
-
-        
+    localStorage.setItem("initials", JSON.stringify(ititials))
+    localStorage.setItem("scores", secondsLeft)
     
+    renderLastRegistered();
+    }
+
+)
+
+submitBtn.addEventListener("click", finalPage)
+
+function finalPage() {
+    finish.style.display = 'none';
+    correct.style.display = 'none';
+    scoreList.style.display = 'block';
+
+    var initials = JSON.parse(localStorage.getItem("initials"))
+    var allScores= JSON.parse(localStorage.getItem("scores"))
+    highScoresInt.textContent = (initials)
+    highScoresSc.textContent = allScores
 
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}

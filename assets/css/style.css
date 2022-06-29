@@ -11,7 +11,7 @@ header h3{
 }
 
 /* styling for start page and questions when they appear on page */
-#startPage, #question-card{
+#startPage, #question-card, #list-scores{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -21,7 +21,7 @@ header h3{
 }
 
 /* hides question & question buttons initially */
-#question-card #question,  #question-card button{
+#question-card #question,  #question-card button, #list-scores, #list-scores button{
     display: none;
 }
 
